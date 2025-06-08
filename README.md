@@ -98,7 +98,7 @@ Explore the app to see these components in action!
 
 ## 🖼️ Screenshots
 
-*(Add screenshots or GIFs of the app here to showcase the UI)*
+
 
 ## 🤝 Contributing
 
