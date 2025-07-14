@@ -1,5 +1,5 @@
 /*
- * Designed and developed by Cavin
+ * Designed and developed by MetichaHQ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,13 +45,13 @@ fun AppNavigation() {
 
     NavDisplay(
         entryDecorators =
-            listOf(
-                // Add the default decorators for managing scenes and saving state
-                rememberSceneSetupNavEntryDecorator(),
-                rememberSavedStateNavEntryDecorator(),
-                // Then add the view model store decorator
-                rememberViewModelStoreNavEntryDecorator(),
-            ),
+        listOf(
+            // Add the default decorators for managing scenes and saving state
+            rememberSceneSetupNavEntryDecorator(),
+            rememberSavedStateNavEntryDecorator(),
+            // Then add the view model store decorator
+            rememberViewModelStoreNavEntryDecorator(),
+        ),
         backStack = backStack,
         onBack = { backStack.removeLastOrNull() },
         transitionSpec = {
@@ -69,76 +69,76 @@ fun AppNavigation() {
                 slideOutHorizontally(targetOffsetX = { it })
         },
         entryProvider =
-            entryProvider {
-                entry<Routes.HomeRoute> {
-                    HomeScreen(
-                        onNavigateToButtonGroup = { backStack.add(ButtonGroupRoutes.ListingRoute) },
-                        onNavigateToProgressIndicator = {
-                            backStack.add(
-                                ProgressIndicatorRoutes.ListingRoute,
-                            )
-                        },
-                        onNavigateToButtonRoute = { backStack.add(ButtonRoutes.ButtonRoute) },
-                        onNavigateToBottomAppBarRoute = {
-                            backStack.add(
-                                BottomApBarRoutes.ListingRoute,
-                            )
-                        },
-                        onNavigateToFabMenuRoute = { backStack.add(FabMenuRoutes.FabMenuRoute) },
-                        onNavigateToFloatingToolBarRoute = {
-                            backStack.add(
-                                FloatingToolBarRoutes.ListingRoute,
-                            )
-                        },
-                        onNavigateToLargeFabRoute = {
-                            backStack.add(
-                                LargeFabRoutes.ListingRoute,
-                            )
-                        },
-                        onNavigateToNavigationRailRoute = {
-                            backStack.add(
-                                NavigationRailRoutes.ListingRoute,
-                            )
-                        },
-                        onNavigateToSplitButtonRoute = {
-                            backStack.add(
-                                SplitButtonRoutes.ListingRoute,
-                            )
-                        },
-                        onNavigateToVerticalFloatingToolbarRoute = {
-                            backStack.add(
-                                VerticalFloatingToolBarRoutes.ToolbarRoute,
-                            )
-                        },
-                        onNavigateToWideNavigationRailRoute = {
-                            backStack.add(
-                                WideNavigationRailRoutes.ToolbarRoute,
-                            )
-                        },
-                    )
-                }
+        entryProvider {
+            entry<Routes.HomeRoute> {
+                HomeScreen(
+                    onNavigateToButtonGroup = { backStack.add(ButtonGroupRoutes.ListingRoute) },
+                    onNavigateToProgressIndicator = {
+                        backStack.add(
+                            ProgressIndicatorRoutes.ListingRoute,
+                        )
+                    },
+                    onNavigateToButtonRoute = { backStack.add(ButtonRoutes.ButtonRoute) },
+                    onNavigateToBottomAppBarRoute = {
+                        backStack.add(
+                            BottomApBarRoutes.ListingRoute,
+                        )
+                    },
+                    onNavigateToFabMenuRoute = { backStack.add(FabMenuRoutes.FabMenuRoute) },
+                    onNavigateToFloatingToolBarRoute = {
+                        backStack.add(
+                            FloatingToolBarRoutes.ListingRoute,
+                        )
+                    },
+                    onNavigateToLargeFabRoute = {
+                        backStack.add(
+                            LargeFabRoutes.ListingRoute,
+                        )
+                    },
+                    onNavigateToNavigationRailRoute = {
+                        backStack.add(
+                            NavigationRailRoutes.ListingRoute,
+                        )
+                    },
+                    onNavigateToSplitButtonRoute = {
+                        backStack.add(
+                            SplitButtonRoutes.ListingRoute,
+                        )
+                    },
+                    onNavigateToVerticalFloatingToolbarRoute = {
+                        backStack.add(
+                            VerticalFloatingToolBarRoutes.ToolbarRoute,
+                        )
+                    },
+                    onNavigateToWideNavigationRailRoute = {
+                        backStack.add(
+                            WideNavigationRailRoutes.ToolbarRoute,
+                        )
+                    },
+                )
+            }
 
-                groupButtonNavGraph(backStack)
+            groupButtonNavGraph(backStack)
 
-                progressIndicatorNavGraph(backStack)
+            progressIndicatorNavGraph(backStack)
 
-                buttonNavGraph(backStack)
+            buttonNavGraph(backStack)
 
-                bottomAppBarNavGraph(backStack)
+            bottomAppBarNavGraph(backStack)
 
-                fabMenuNavGraph(backStack)
+            fabMenuNavGraph(backStack)
 
-                floatingToolBarNavGraph(backStack)
+            floatingToolBarNavGraph(backStack)
 
-                largeFabNavGraph(backStack)
+            largeFabNavGraph(backStack)
 
-                navigationRailNavGraph(backStack)
+            navigationRailNavGraph(backStack)
 
-                splitButtonNavGraph(backStack)
+            splitButtonNavGraph(backStack)
 
-                verticalFloatingToolBarNavGraph()
+            verticalFloatingToolBarNavGraph()
 
-                wideNavigationRailNavGraph()
-            },
+            wideNavigationRailNavGraph()
+        },
     )
 }
