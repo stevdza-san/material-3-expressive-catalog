@@ -1,5 +1,5 @@
 /*
- * Designed and developed by MetichaHQ
+ * Designed and developed by Cavin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,25 +15,24 @@
  */
 package com.cavin.material3expressivecatalog.components.navigationrail
 
-import androidx.navigation3.runtime.EntryProviderBuilder
-import androidx.navigation3.runtime.NavBackStack
-import androidx.navigation3.runtime.NavKey
-import androidx.navigation3.runtime.entry
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.composable
 import com.cavin.material3expressivecatalog.navigation.NavigationRailRoutes
 
-fun EntryProviderBuilder<NavKey>.navigationRailNavGraph(backStack: NavBackStack) {
-    entry<NavigationRailRoutes.ListingRoute> {
+fun NavGraphBuilder.navigationRailNavGraph(navController: NavHostController) {
+    composable<NavigationRailRoutes.ListingRoute> {
         NavigationRailListingScreen(
-            onNavigateBack = { backStack.removeLastOrNull() },
-            onNavigateToExample = { backStack.add(it) },
+            onNavigateBack = { navController.popBackStack() },
+            onNavigateToExample = { navController.navigate(it) },
         )
     }
 
-    entry<NavigationRailRoutes.Variant1Route> {
+    composable<NavigationRailRoutes.Variant1Route> {
         NavigationRailVariant1()
     }
 
-    entry<NavigationRailRoutes.Variant2Route> {
+    composable<NavigationRailRoutes.Variant2Route> {
         NavigationRailVariant2()
     }
 }

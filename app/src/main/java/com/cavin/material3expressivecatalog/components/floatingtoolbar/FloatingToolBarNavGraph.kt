@@ -1,5 +1,5 @@
 /*
- * Designed and developed by MetichaHQ
+ * Designed and developed by Cavin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,25 +15,24 @@
  */
 package com.cavin.material3expressivecatalog.components.floatingtoolbar
 
-import androidx.navigation3.runtime.EntryProviderBuilder
-import androidx.navigation3.runtime.NavBackStack
-import androidx.navigation3.runtime.NavKey
-import androidx.navigation3.runtime.entry
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.composable
 import com.cavin.material3expressivecatalog.navigation.FloatingToolBarRoutes
 
-fun EntryProviderBuilder<NavKey>.floatingToolBarNavGraph(backStack: NavBackStack) {
-    entry<FloatingToolBarRoutes.ListingRoute> {
+fun NavGraphBuilder.floatingToolBarNavGraph(navController: NavHostController) {
+    composable<FloatingToolBarRoutes.ListingRoute> {
         FloatingToolBarListingScreen(
-            onNavigateBack = { backStack.removeLastOrNull() },
-            onNavigateToExample = { backStack.add(it) },
+            onNavigateBack = { navController.popBackStack() },
+            onNavigateToExample = { navController.navigate(it) },
         )
     }
 
-    entry<FloatingToolBarRoutes.Variant1Route> {
+    composable<FloatingToolBarRoutes.Variant1Route> {
         FloatingToolBarVariant1()
     }
 
-    entry<FloatingToolBarRoutes.Variant2Route> {
+    composable<FloatingToolBarRoutes.Variant2Route> {
         FloatingToolBarVariant2()
     }
 }

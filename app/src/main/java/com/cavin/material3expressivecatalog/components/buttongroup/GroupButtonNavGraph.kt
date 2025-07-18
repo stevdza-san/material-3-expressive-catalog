@@ -1,5 +1,5 @@
 /*
- * Designed and developed by MetichaHQ
+ * Designed and developed by Cavin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,32 @@
  */
 package com.cavin.material3expressivecatalog.components.buttongroup
 
-import androidx.navigation3.runtime.EntryProviderBuilder
-import androidx.navigation3.runtime.NavBackStack
-import androidx.navigation3.runtime.NavKey
-import androidx.navigation3.runtime.entry
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.composable
 import com.cavin.material3expressivecatalog.navigation.ButtonGroupRoutes
 import com.cavin.material3expressivecatalog.ui.screens.ContentScreen
 
 /**
  * Defines the navigation graph for the Button Group feature.
  */
-fun EntryProviderBuilder<NavKey>.groupButtonNavGraph(backStack: NavBackStack) {
-    entry<ButtonGroupRoutes.ListingRoute> {
+fun NavGraphBuilder.groupButtonNavGraph(navController: NavHostController) {
+    composable<ButtonGroupRoutes.ListingRoute> {
         ButtonGroupListingScreen(
             onNavigateToExample = { route ->
-                backStack.add(route)
+                navController.navigate(route)
             },
-            onNavigateBack = { backStack.removeLastOrNull() },
+            onNavigateBack = { navController.popBackStack() },
         )
     }
 
-    entry<ButtonGroupRoutes.ButtonGroupRoute> {
+    composable<ButtonGroupRoutes.ButtonGroupRoute> {
         ContentScreen {
             ButtonGroupComposable()
         }
     }
 
-    entry<ButtonGroupRoutes.ConnectedButtonGroupRoute> {
+    composable<ButtonGroupRoutes.ConnectedButtonGroupRoute> {
         ContentScreen {
             ConnectedButtonGroupComposable()
         }

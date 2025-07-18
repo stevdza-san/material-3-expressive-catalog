@@ -1,5 +1,5 @@
 /*
- * Designed and developed by MetichaHQ
+ * Designed and developed by Cavin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,140 +15,139 @@
  */
 package com.cavin.material3expressivecatalog.navigation
 
-import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
 sealed interface Routes {
     @Serializable
-    data object HomeRoute : NavKey, Routes
+    data object HomeRoute : Routes
 }
 
 sealed interface ButtonGroupRoutes :
-    Routes,
-    NavKey {
+    Routes
+{
     @Serializable
-    data object ListingRoute : NavKey, ButtonGroupRoutes
+    data object ListingRoute : ButtonGroupRoutes
 
     @Serializable
-    data object ButtonGroupRoute : NavKey, ButtonGroupRoutes
+    data object ButtonGroupRoute : ButtonGroupRoutes
 
     @Serializable
-    data object ConnectedButtonGroupRoute : NavKey, ButtonGroupRoutes
+    data object ConnectedButtonGroupRoute : ButtonGroupRoutes
 }
 
 sealed interface ProgressIndicatorRoutes :
-    Routes,
-    NavKey {
+    Routes
+{
     @Serializable
-    data object ProgressIndicatorRoute : NavKey, ProgressIndicatorRoutes
+    data object ProgressIndicatorRoute : ProgressIndicatorRoutes
 
     @Serializable
-    data object RefreshIndicatorRoute : NavKey, ProgressIndicatorRoutes
+    data object RefreshIndicatorRoute : ProgressIndicatorRoutes
 
     @Serializable
-    data object ListingRoute : NavKey, ProgressIndicatorRoutes
+    data object ListingRoute : ProgressIndicatorRoutes
 }
 
 sealed interface ButtonRoutes :
-    Routes,
-    NavKey {
+    Routes
+{
     @Serializable
-    data object ButtonRoute : NavKey, ButtonRoutes
+    data object ButtonRoute : ButtonRoutes
 }
 
 sealed interface FabMenuRoutes :
-    Routes,
-    NavKey {
+    Routes
+{
     @Serializable
-    data object FabMenuRoute : NavKey, FabMenuRoutes
+    data object FabMenuRoute : FabMenuRoutes
 }
 
 sealed interface BottomApBarRoutes :
-    Routes,
-    NavKey {
+    Routes
+{
     @Serializable
-    data object ListingRoute : NavKey, BottomApBarRoutes
+    data object ListingRoute : BottomApBarRoutes
 
     @Serializable
-    data object Variant1Route : NavKey, BottomApBarRoutes
+    data object Variant1Route : BottomApBarRoutes
 
     @Serializable
-    data object Variant2Route : NavKey, BottomApBarRoutes
+    data object Variant2Route : BottomApBarRoutes
 
     @Serializable
-    data object Variant3Route : NavKey, BottomApBarRoutes
+    data object Variant3Route : BottomApBarRoutes
 
     @Serializable
-    data object Variant4Route : NavKey, BottomApBarRoutes
+    data object Variant4Route : BottomApBarRoutes
 }
 
 sealed interface FloatingToolBarRoutes :
-    Routes,
-    NavKey {
+    Routes
+{
     @Serializable
-    data object ListingRoute : NavKey, FloatingToolBarRoutes
+    data object ListingRoute : FloatingToolBarRoutes
 
     @Serializable
-    data object Variant1Route : NavKey, FloatingToolBarRoutes
+    data object Variant1Route : FloatingToolBarRoutes
 
     @Serializable
-    data object Variant2Route : NavKey, FloatingToolBarRoutes
+    data object Variant2Route : FloatingToolBarRoutes
 }
 
 sealed interface LargeFabRoutes :
-    Routes,
-    NavKey {
+    Routes
+{
     @Serializable
-    data object ListingRoute : NavKey, LargeFabRoutes
+    data object ListingRoute : LargeFabRoutes
 
     @Serializable
-    data object Variant1Route : NavKey, LargeFabRoutes
+    data object Variant1Route : LargeFabRoutes
 
     @Serializable
-    data object Variant2Route : NavKey, LargeFabRoutes
+    data object Variant2Route : LargeFabRoutes
 }
 
 sealed interface NavigationRailRoutes :
-    Routes,
-    NavKey {
+    Routes
+{
     @Serializable
-    data object ListingRoute : NavKey, NavigationRailRoutes
+    data object ListingRoute : NavigationRailRoutes
 
     @Serializable
-    data object Variant1Route : NavKey, NavigationRailRoutes
+    data object Variant1Route : NavigationRailRoutes
 
     @Serializable
-    data object Variant2Route : NavKey, NavigationRailRoutes
+    data object Variant2Route : NavigationRailRoutes
 }
 
 sealed interface SplitButtonRoutes :
-    Routes,
-    NavKey {
+    Routes
+{
     @Serializable
-    data object ListingRoute : NavKey, SplitButtonRoutes
+    data object ListingRoute : SplitButtonRoutes
 
     @Serializable
-    data object Variant1Route : NavKey, SplitButtonRoutes
+    data object Variant1Route : SplitButtonRoutes
 
     @Serializable
-    data object Variant2Route : NavKey, SplitButtonRoutes
+    data object Variant2Route : SplitButtonRoutes
 
     @Serializable
-    data object Variant3Route : NavKey, SplitButtonRoutes
+    data object Variant3Route : SplitButtonRoutes
 }
 
 sealed interface VerticalFloatingToolBarRoutes :
-    Routes,
-    NavKey {
+    Routes
+{
 
     @Serializable
-    data object ToolbarRoute : NavKey, VerticalFloatingToolBarRoutes
+    data object ToolbarRoute : VerticalFloatingToolBarRoutes
 }
 
 sealed interface WideNavigationRailRoutes :
-    Routes,
-    NavKey {
+    Routes
+{
 
     @Serializable
-    data object ToolbarRoute : NavKey, WideNavigationRailRoutes
+    data object ToolbarRoute : WideNavigationRailRoutes
 }

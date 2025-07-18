@@ -1,5 +1,5 @@
 /*
- * Designed and developed by MetichaHQ
+ * Designed and developed by Cavin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,31 +15,30 @@
  */
 package com.cavin.material3expressivecatalog.components.splitbutton
 
-import androidx.navigation3.runtime.EntryProviderBuilder
-import androidx.navigation3.runtime.NavBackStack
-import androidx.navigation3.runtime.NavKey
-import androidx.navigation3.runtime.entry
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.composable
 import com.cavin.material3expressivecatalog.navigation.SplitButtonRoutes
 
-fun EntryProviderBuilder<NavKey>.splitButtonNavGraph(backStack: NavBackStack) {
-    entry<SplitButtonRoutes.ListingRoute> {
+fun NavGraphBuilder.splitButtonNavGraph(navController: NavHostController) {
+    composable<SplitButtonRoutes.ListingRoute> {
         SplitButtonListingScreen(
             onNavigateToExample = { route ->
-                backStack.add(route)
+                navController.navigate(route)
             },
-            onNavigateBack = { backStack.removeLastOrNull() },
+            onNavigateBack = { navController.popBackStack() },
         )
     }
 
-    entry<SplitButtonRoutes.Variant1Route> {
+    composable<SplitButtonRoutes.Variant1Route> {
         SplitButtonVariant1()
     }
 
-    entry<SplitButtonRoutes.Variant2Route> {
+    composable<SplitButtonRoutes.Variant2Route> {
         SplitButtonVariant2()
     }
 
-    entry<SplitButtonRoutes.Variant3Route> {
+    composable<SplitButtonRoutes.Variant3Route> {
         SplitButtonVariant3()
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Designed and developed by MetichaHQ
+ * Designed and developed by Cavin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,13 @@
  */
 package com.cavin.material3expressivecatalog.components.buttons
 
-import androidx.navigation3.runtime.EntryProviderBuilder
-import androidx.navigation3.runtime.NavBackStack
-import androidx.navigation3.runtime.NavKey
-import androidx.navigation3.runtime.entry
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.composable
 import com.cavin.material3expressivecatalog.navigation.ButtonRoutes
 
-fun EntryProviderBuilder<NavKey>.buttonNavGraph(backStack: NavBackStack) {
-    entry<ButtonRoutes.ButtonRoute> {
+fun NavGraphBuilder.buttonNavGraph(navController: NavHostController) {
+    composable<ButtonRoutes.ButtonRoute> {
         ButtonComposables()
     }
 }

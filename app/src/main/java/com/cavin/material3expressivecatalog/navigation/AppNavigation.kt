@@ -1,5 +1,5 @@
 /*
- * Designed and developed by MetichaHQ
+ * Designed and developed by Cavin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,10 @@
  */
 package com.cavin.material3expressivecatalog.navigation
 
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.animation.togetherWith
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
-import androidx.navigation3.runtime.entry
-import androidx.navigation3.runtime.entryProvider
-import androidx.navigation3.runtime.rememberNavBackStack
-import androidx.navigation3.runtime.rememberSavedStateNavEntryDecorator
-import androidx.navigation3.ui.NavDisplay
-import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.cavin.material3expressivecatalog.components.bottomappbar.bottomAppBarNavGraph
 import com.cavin.material3expressivecatalog.components.buttongroup.groupButtonNavGraph
 import com.cavin.material3expressivecatalog.components.buttons.buttonNavGraph
@@ -41,104 +34,80 @@ import com.cavin.material3expressivecatalog.home.HomeScreen
 
 @Composable
 fun AppNavigation() {
-    val backStack = rememberNavBackStack(Routes.HomeRoute)
+    val navController = rememberNavController()
 
-    NavDisplay(
-        entryDecorators =
-        listOf(
-            // Add the default decorators for managing scenes and saving state
-            rememberSceneSetupNavEntryDecorator(),
-            rememberSavedStateNavEntryDecorator(),
-            // Then add the view model store decorator
-            rememberViewModelStoreNavEntryDecorator(),
-        ),
-        backStack = backStack,
-        onBack = { backStack.removeLastOrNull() },
-        transitionSpec = {
-            slideInHorizontally(initialOffsetX = { it }) togetherWith
-                slideOutHorizontally(targetOffsetX = { -it })
-        },
-        popTransitionSpec = {
-            // Slide in from left when navigating back
-            slideInHorizontally(initialOffsetX = { -it }) togetherWith
-                slideOutHorizontally(targetOffsetX = { it })
-        },
-        predictivePopTransitionSpec = {
-            // Slide in from left when navigating back
-            slideInHorizontally(initialOffsetX = { -it }) togetherWith
-                slideOutHorizontally(targetOffsetX = { it })
-        },
-        entryProvider =
-        entryProvider {
-            entry<Routes.HomeRoute> {
-                HomeScreen(
-                    onNavigateToButtonGroup = { backStack.add(ButtonGroupRoutes.ListingRoute) },
-                    onNavigateToProgressIndicator = {
-                        backStack.add(
-                            ProgressIndicatorRoutes.ListingRoute,
-                        )
-                    },
-                    onNavigateToButtonRoute = { backStack.add(ButtonRoutes.ButtonRoute) },
-                    onNavigateToBottomAppBarRoute = {
-                        backStack.add(
-                            BottomApBarRoutes.ListingRoute,
-                        )
-                    },
-                    onNavigateToFabMenuRoute = { backStack.add(FabMenuRoutes.FabMenuRoute) },
-                    onNavigateToFloatingToolBarRoute = {
-                        backStack.add(
-                            FloatingToolBarRoutes.ListingRoute,
-                        )
-                    },
-                    onNavigateToLargeFabRoute = {
-                        backStack.add(
-                            LargeFabRoutes.ListingRoute,
-                        )
-                    },
-                    onNavigateToNavigationRailRoute = {
-                        backStack.add(
-                            NavigationRailRoutes.ListingRoute,
-                        )
-                    },
-                    onNavigateToSplitButtonRoute = {
-                        backStack.add(
-                            SplitButtonRoutes.ListingRoute,
-                        )
-                    },
-                    onNavigateToVerticalFloatingToolbarRoute = {
-                        backStack.add(
-                            VerticalFloatingToolBarRoutes.ToolbarRoute,
-                        )
-                    },
-                    onNavigateToWideNavigationRailRoute = {
-                        backStack.add(
-                            WideNavigationRailRoutes.ToolbarRoute,
-                        )
-                    },
-                )
-            }
+    NavHost(
+        startDestination = Routes.HomeRoute,
+        navController = navController
+    ) {
+        composable<Routes.HomeRoute> {
+            HomeScreen(
+                onNavigateToButtonGroup = { navController.navigate(ButtonGroupRoutes.ListingRoute) },
+                onNavigateToProgressIndicator = {
+                    navController.navigate(
+                        ProgressIndicatorRoutes.ListingRoute,
+                    )
+                },
+                onNavigateToButtonRoute = { navController.navigate(ButtonRoutes.ButtonRoute) },
+                onNavigateToBottomAppBarRoute = {
+                    navController.navigate(
+                        BottomApBarRoutes.ListingRoute,
+                    )
+                },
+                onNavigateToFabMenuRoute = { navController.navigate(FabMenuRoutes.FabMenuRoute) },
+                onNavigateToFloatingToolBarRoute = {
+                    navController.navigate(
+                        FloatingToolBarRoutes.ListingRoute,
+                    )
+                },
+                onNavigateToLargeFabRoute = {
+                    navController.navigate(
+                        LargeFabRoutes.ListingRoute,
+                    )
+                },
+                onNavigateToNavigationRailRoute = {
+                    navController.navigate(
+                        NavigationRailRoutes.ListingRoute,
+                    )
+                },
+                onNavigateToSplitButtonRoute = {
+                    navController.navigate(
+                        SplitButtonRoutes.ListingRoute,
+                    )
+                },
+                onNavigateToVerticalFloatingToolbarRoute = {
+                    navController.navigate(
+                        VerticalFloatingToolBarRoutes.ToolbarRoute,
+                    )
+                },
+                onNavigateToWideNavigationRailRoute = {
+                    navController.navigate(
+                        WideNavigationRailRoutes.ToolbarRoute,
+                    )
+                },
+            )
+        }
 
-            groupButtonNavGraph(backStack)
+        groupButtonNavGraph(navController)
 
-            progressIndicatorNavGraph(backStack)
+        progressIndicatorNavGraph(navController)
 
-            buttonNavGraph(backStack)
+        buttonNavGraph(navController)
 
-            bottomAppBarNavGraph(backStack)
+        bottomAppBarNavGraph(navController)
 
-            fabMenuNavGraph(backStack)
+        fabMenuNavGraph(navController)
 
-            floatingToolBarNavGraph(backStack)
+        floatingToolBarNavGraph(navController)
 
-            largeFabNavGraph(backStack)
+        largeFabNavGraph(navController)
 
-            navigationRailNavGraph(backStack)
+        navigationRailNavGraph(navController)
 
-            splitButtonNavGraph(backStack)
+        splitButtonNavGraph(navController)
 
-            verticalFloatingToolBarNavGraph()
+        verticalFloatingToolBarNavGraph()
 
-            wideNavigationRailNavGraph()
-        },
-    )
+        wideNavigationRailNavGraph()
+    }
 }

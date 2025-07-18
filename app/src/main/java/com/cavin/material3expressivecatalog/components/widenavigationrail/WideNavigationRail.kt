@@ -1,5 +1,5 @@
 /*
- * Designed and developed by MetichaHQ
+ * Designed and developed by Cavin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,18 +69,18 @@ fun WideNavigationRail() {
             header = {
                 IconButton(
                     modifier =
-                    Modifier
-                        .padding(start = 24.dp)
-                        .semantics {
-                            // The button must announce the expanded or collapsed state of the rail
-                            // for accessibility.
-                            stateDescription =
-                                if (state.currentValue == WideNavigationRailValue.Expanded) {
-                                    "Expanded"
-                                } else {
-                                    "Collapsed"
-                                }
-                        },
+                        Modifier
+                            .padding(start = 24.dp)
+                            .semantics {
+                                // The button must announce the expanded or collapsed state of the rail
+                                // for accessibility.
+                                stateDescription =
+                                    if (state.currentValue == WideNavigationRailValue.Expanded) {
+                                        "Expanded"
+                                    } else {
+                                        "Collapsed"
+                                    }
+                            },
                     onClick = {
                         scope.launch {
                             if (state.targetValue == WideNavigationRailValue.Expanded) {
@@ -133,9 +133,9 @@ fun WideNavigationRail() {
             Text(
                 modifier = Modifier.padding(16.dp),
                 text =
-                "Note: The orientation of this demo has been locked to portrait mode, because" +
-                    " landscape mode may result in a compact height in certain devices. For" +
-                    " any compact screen dimensions, use a Navigation Bar instead.",
+                    "Note: The orientation of this demo has been locked to portrait mode, because" +
+                        " landscape mode may result in a compact height in certain devices. For" +
+                        " any compact screen dimensions, use a Navigation Bar instead.",
             )
         }
     }
